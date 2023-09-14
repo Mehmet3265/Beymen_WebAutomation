@@ -1,0 +1,1 @@
+Feature: Check the opened main page and verify informations
