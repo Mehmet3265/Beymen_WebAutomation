@@ -45,10 +45,10 @@ public class BasePage {
       try {
            FileInputStream input = new FileInputStream("C:\\Users\\mehme\\IdeaProjects\\Beymen_WebAutomation\\src\\test\\resources\\features\\products.xlsx");
            Workbook workbook = new XSSFWorkbook(input);
-           Sheet sheet = workbook.getSheetAt(0); // SayfaAdi, okumak istediğiniz çalışma sayfasının adıdır.
-           Row row = sheet.getRow(rowNum); // rowIndex, okumak istediğiniz satırın indeksi
-           Cell cell = row.getCell(cellNum); // cellIndex, okumak istediğiniz sütunun indeksi
-           String value = cell.getStringCellValue(); // Hücrenin değerini alın
+           Sheet sheet = workbook.getSheetAt(0);
+           Row row = sheet.getRow(rowNum);
+           Cell cell = row.getCell(cellNum);
+           String value = cell.getStringCellValue();
            return value;
       }catch (Exception e) {
           return e.getMessage();

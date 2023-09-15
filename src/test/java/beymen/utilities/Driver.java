@@ -26,6 +26,8 @@ public class Driver {
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions options=new ChromeOptions();
                     options.addArguments("--disable-notifications");
+                    options.addArguments("force-device-scale-factor=0.75");
+                    options.addArguments("high-dpi-support=0.75");
                     driver = new ChromeDriver(options);
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

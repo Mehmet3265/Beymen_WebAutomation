@@ -35,13 +35,4 @@ public class ProductPage extends BasePage{
     public List<WebElement> gömlekler;
 
 
-    //this method's aim is to get the all shirts to a list
-   /* public List<WebElement> gömleks = new ArrayList<>();
-    public void gömlekList(){
-
-        for (WebElement gömlek: gömlekler) {
-         gömleks.add(gömlek);
-        }
-    }*/
-
 }

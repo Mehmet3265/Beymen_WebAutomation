@@ -7,21 +7,15 @@ import beymen.pages.ProductPage;
 import beymen.utilities.BrowserUtils;
 import beymen.utilities.ConfigurationReader;
 import beymen.utilities.Driver;
-import io.cucumber.java.bs.A;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.*;
+
 import org.openqa.selenium.support.ui.Select;
 
 import java.awt.*;
@@ -57,9 +51,7 @@ public class BeymenStepDefinitions {
     @When("user clicks to seach box")
     public void user_clicks_to_seach_box(){
        homePage.searchBox.click();
-       /* homePage.cellValue(2,2);
-        Actions actions = new Actions(Driver.getDriver());
-        actions.click().perform();*/
+
     }
     @And("user gets the şort word from the excel file, from {int} row {int} column and enters from keyboard")
     public void userGetsTheŞortWordFromTheExcelFileFromRowColumnAndEntersFromKeyboard(int rowNum, int cellNum) {
@@ -80,10 +72,9 @@ public class BeymenStepDefinitions {
     public void userGetsTheGömlekWordFromTheExcelFileFromRowColumnAndEntersFromKeyboard(int rowNum, int cellNum) {
 
         browserUtils.wait(2);
+
         homePage.searchBox.sendKeys(basePage.cellValue(rowNum,cellNum), Keys.ENTER);
 
-       /* homePage.cellValue(1,2);
-        browserUtils.sleep(3);*/
     }
 
 
@@ -97,10 +88,6 @@ public class BeymenStepDefinitions {
         System.out.println(randomIndex);
         browserUtils.wait(2);
 
-
-        //js ile scroll down yapılmalı
-
-
         browserUtils.waitForClickablility(productPage.gömlekler.get(randomIndex),3).click();
 
     }
@@ -108,11 +95,10 @@ public class BeymenStepDefinitions {
     public void user_writes_the_selected_product_s_information_and_prize_to_txt_file() {
         try {
             PrintWriter printWriter =new PrintWriter("productInfo.txt");
-            printWriter.write("123");
+            printWriter.write(productCost=productPage.productPrice.getText());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        productCost=productPage.productPrice.getText();
 
     }
     @When("user selects a random size from the size part")
@@ -143,9 +129,9 @@ public class BeymenStepDefinitions {
     @Then("user verifies that the price of the product on the product pace matches with the product price in the basket")
     public void user_verifies_that_the_price_of_the_product_on_the_product_pace_matches_with_the_product_price_in_the_basket() {
         String productPrice= productCost.trim().substring(0,productCost.trim().indexOf(" "));
-        String basketPrize = productPage.basketPrice.getText().trim().substring(0,productPage.basketPrice.getText().trim().indexOf(","));
-        System.out.println(productPrice+" "+basketPrize);
-        Assert.assertEquals(productPrice,basketPrize);
+        String basketPrice = productPage.basketPrice.getText().trim().substring(0,productPage.basketPrice.getText().trim().indexOf(","));
+        System.out.println(productPrice+" "+basketPrice);
+        Assert.assertEquals(productPrice,basketPrice);
 
     }
 
