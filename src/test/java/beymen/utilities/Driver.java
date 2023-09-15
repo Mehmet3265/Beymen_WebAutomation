@@ -24,7 +24,9 @@ public class Driver {
 
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    ChromeOptions options=new ChromeOptions();
+                    options.addArguments("--disable-notifications");
+                    driver = new ChromeDriver(options);
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;

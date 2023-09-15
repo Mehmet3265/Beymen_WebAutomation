@@ -40,4 +40,8 @@ public class BrowserUtils {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public void wait(int second){
+        Driver.getDriver().manage().timeouts().implicitlyWait(second, java.util.concurrent.TimeUnit.SECONDS);
+    }
+
 }
